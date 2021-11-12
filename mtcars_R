@@ -1,0 +1,46 @@
+mtcars = mtcars
+View(mtcars)
+
+#Backward Model ke 1
+model = lm(mpg~cyl+disp+hp+drat+wt+qsec+vs+am+gear+carb, mtcars)
+summary(model)
+
+#Backward Model ke 2
+model = lm(mpg~disp+hp+drat+wt+qsec+vs+am+gear+carb, mtcars)
+summary(model)
+
+#Backward Model ke 3
+model = lm(mpg~disp+hp+drat+wt+qsec+am+gear+carb, mtcars)
+summary(model)
+
+#Backward Model ke 4
+model = lm(mpg~disp+hp+drat+wt+qsec+am+gear, mtcars)
+summary(model)
+
+#Backward Model ke 5
+model = lm(mpg~disp+hp+drat+wt+qsec+am, mtcars)
+summary(model)
+
+#Backward Model ke 6
+model = lm(mpg~disp+hp+wt+qsec+am, mtcars)
+summary(model)
+
+#Backward Model ke 7
+model = lm(mpg~hp+wt+qsec+am, mtcars)
+summary(model)
+
+#Backward Model ke 8
+model = lm(mpg~wt+qsec+am, mtcars)
+summary(model)
+
+#Uji linearitas dan homogenitas
+par(mfrow=c(2,2))
+plot(model)
+
+#Uji normalitas
+residual=residuals(model)
+shapiro.test(residual)
+
+#Uji multikolinearitas
+library(car)
+vif(model)
